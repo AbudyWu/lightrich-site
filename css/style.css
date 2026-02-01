@@ -282,3 +282,105 @@ body{
   .nav__link,.nav__cta{text-align:left}
   .nav__toggle{display:inline-block}
 }
+
+/* Partners section */
+.partners {
+  background: #fff;           /* 你要的白底 */
+  padding: 56px 0;
+}
+
+.partners__container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.partners__title {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #111;
+}
+
+.partners__subtitle {
+  margin: 8px 0 22px;
+  color: #555;
+}
+
+/* Marquee */
+.partners__marquee {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff; /* 再保險一次，避免其他區塊背景干擾 */
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* 左右淡出遮罩，視覺更舒服 */
+.partners__marquee::before,
+.partners__marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.partners__marquee::before {
+  left: 0;
+  background: linear-gradient(to right, #fff 0%, rgba(255,255,255,0) 100%);
+}
+.partners__marquee::after {
+  right: 0;
+  background: linear-gradient(to left, #fff 0%, rgba(255,255,255,0) 100%);
+}
+
+.partners__track {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 18px 28px;
+  width: max-content;
+  animation: partners-marquee 28s linear infinite;
+}
+
+/* hover 暫停（桌機好用） */
+.partners__marquee:hover .partners__track {
+  animation-play-state: paused;
+}
+
+.partners__item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;               /* 統一高度，logo 大小不一也會對齊 */
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #fff;           /* 你說的：有些 logo 還有白底，就給白底容器 */
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.partners__item img {
+  max-height: 42px;           /* 控制 logo 視覺高度 */
+  max-width: 160px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: none;
+}
+
+@keyframes partners-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* JS 會複製一份，這裡跑半圈就無縫 */
+}
+
+/* 無障礙：使用者若偏好減少動態，就停止跑馬燈 */
+@media (prefers-reduced-motion: reduce) {
+  .partners__track {
+    animation: none;
+  }
+}
