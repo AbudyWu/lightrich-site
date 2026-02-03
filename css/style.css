@@ -28,6 +28,43 @@ body{
 }
 
 .en{opacity:.75; font-size:.92em}
+#about .section__head p .en {
+  display: block;
+  margin-top: 0.4rem;
+  color: #6b7280;
+  font-size: 0.95em;
+}
+#about .kv li {
+  font-size: 0.95rem;
+  color: #111827; /* 深灰接近黑 */
+}
+
+#about .kv li .en {
+  display: block;
+  margin-left: 0;
+  margin-top: 0.2rem;
+}
+#services .section__head p .en {
+  display: block;
+  margin-top: 0.4rem;
+  color: #6b7280;
+  font-size: 0.95em;
+}
+
+#capabilities .section__head p .en {
+  display: block;
+  margin-top: 0.4rem;
+  color: #6b7280;
+  font-size: 0.95em;
+}
+
+#equipment .section__head p .en {
+  display: block;
+  margin-top: 0.4rem;
+  color: #6b7280;
+  font-size: 0.95em;
+}
+
 .muted{color:var(--muted)}
 .center{text-align:center}
 
@@ -383,4 +420,30 @@ body{
   .partners__track {
     animation: none;
   }
+}
+
+/* Positioning keywords (NOT buttons) */
+.position-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.position-tag {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #f1f5f9;        /* 淡灰藍 */
+  color: #334155;
+  border: 1px dashed #cbd5e1; /* 虛線 → 明確不是按鈕 */
+  cursor: default;
+}
+
+.position-tag .en {
+  display: inline;
+  margin-left: 4px;
+  font-weight: 600;
+  opacity: 0.7;
 }
