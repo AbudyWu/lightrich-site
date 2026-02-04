@@ -13,6 +13,9 @@
   --container:1120px;
 }
 
+/* =========================
+   Base
+   ========================= */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -28,46 +31,20 @@ body{
 }
 
 .en{opacity:.75; font-size:.92em}
+.muted{color:var(--muted)}
+.center{text-align:center}
+
+/* About: 只讓這段英文換行 */
 #about .section__head p .en {
   display: block;
   margin-top: 0.4rem;
   color: #6b7280;
   font-size: 0.95em;
 }
-#about .kv li {
-  font-size: 0.95rem;
-  color: #111827; /* 深灰接近黑 */
-}
 
-#about .kv li .en {
-  display: block;
-  margin-left: 0;
-  margin-top: 0.2rem;
-}
-#services .section__head p .en {
-  display: block;
-  margin-top: 0.4rem;
-  color: #6b7280;
-  font-size: 0.95em;
-}
-
-#capabilities .section__head p .en {
-  display: block;
-  margin-top: 0.4rem;
-  color: #6b7280;
-  font-size: 0.95em;
-}
-
-#equipment .section__head p .en {
-  display: block;
-  margin-top: 0.4rem;
-  color: #6b7280;
-  font-size: 0.95em;
-}
-
-.muted{color:var(--muted)}
-.center{text-align:center}
-
+/* =========================
+   Header / Nav
+   ========================= */
 .header{
   position:sticky;
   top:0;
@@ -142,6 +119,9 @@ body{
   border-radius:2px;
 }
 
+/* =========================
+   Hero
+   ========================= */
 .hero{
   padding:48px 0 34px;
   background:linear-gradient(180deg, #fff 0%, #fff 60%, var(--alt) 100%);
@@ -202,6 +182,9 @@ body{
 .checklist{margin:0; padding-left:18px; color:#334155}
 .checklist li{margin:8px 0}
 
+/* =========================
+   Sections / Cards
+   ========================= */
 .section{padding:52px 0}
 .section--alt{background:var(--alt)}
 .section__head h2{margin:0 0 10px; font-size:28px}
@@ -273,6 +256,9 @@ body{
 .panel{display:none; margin-top:16px}
 .panel.is-active{display:block}
 
+/* =========================
+   Contact / Footer
+   ========================= */
 .contact{
   background:radial-gradient(1200px 500px at 50% 0%, rgba(96,165,250,.18), rgba(0,0,0,0)),
              linear-gradient(180deg, #0b0d10, #0b0d10);
@@ -309,6 +295,9 @@ body{
 .addr{font-size:14px; line-height:1.55; color:#111827}
 .addr .en{display:block; margin-top:4px; color:#374151}
 
+/* =========================
+   Responsive - Global
+   ========================= */
 @media (max-width: 980px){
   .hero__inner{grid-template-columns:1fr}
   .grid2{grid-template-columns:1fr}
@@ -320,9 +309,11 @@ body{
   .nav__toggle{display:inline-block}
 }
 
-/* Partners section */
+/* =========================
+   Partners section (white bg + marquee)
+   ========================= */
 .partners {
-  background: #fff;           /* 你要的白底 */
+  background: #fff;
   padding: 56px 0;
 }
 
@@ -345,16 +336,14 @@ body{
   color: #555;
 }
 
-/* Marquee */
 .partners__marquee {
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  background: #fff; /* 再保險一次，避免其他區塊背景干擾 */
+  background: #fff;
   border: 1px solid rgba(0,0,0,0.08);
 }
 
-/* 左右淡出遮罩，視覺更舒服 */
 .partners__marquee::before,
 .partners__marquee::after {
   content: "";
@@ -382,8 +371,6 @@ body{
   width: max-content;
   animation: partners-marquee 28s linear infinite;
 }
-
-/* hover 暫停（桌機好用） */
 .partners__marquee:hover .partners__track {
   animation-play-state: paused;
 }
@@ -393,15 +380,15 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 64px;               /* 統一高度，logo 大小不一也會對齊 */
+  height: 64px;
   padding: 8px 14px;
   border-radius: 10px;
-  background: #fff;           /* 你說的：有些 logo 還有白底，就給白底容器 */
+  background: #fff;
   border: 1px solid rgba(0,0,0,0.06);
 }
 
 .partners__item img {
-  max-height: 42px;           /* 控制 logo 視覺高度 */
+  max-height: 42px;
   max-width: 160px;
   width: auto;
   height: auto;
@@ -412,38 +399,163 @@ body{
 
 @keyframes partners-marquee {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* JS 會複製一份，這裡跑半圈就無縫 */
+  to   { transform: translateX(-50%); }
 }
 
-/* 無障礙：使用者若偏好減少動態，就停止跑馬燈 */
 @media (prefers-reduced-motion: reduce) {
-  .partners__track {
-    animation: none;
-  }
+  .partners__track { animation: none; }
 }
 
-/* Positioning keywords (NOT buttons) */
-.position-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+/* =========================
+   Equipment (DIP / SMT)
+   ========================= */
+.equip-block { margin-top: .75rem; }
+
+.equip-head h3 { margin: 0 0 .25rem; }
+.equip-head .muted { margin: 0.25rem 0 0.75rem; }
+
+.equip-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  border:1px dashed rgba(30,41,59,.25);
+  background:rgba(15,23,42,.03);
+  font-weight:700;
+  font-size:.92rem;
+  color:#111827;
+}
+.en-inline{ color:#6b7280; font-size:.92em; font-weight:600; }
+
+/* 兩欄：右邊固定寬度，照片自然變小、對齊左卡視覺更乾淨 */
+.equip-grid{
+  display:grid;
+  grid-template-columns: 1fr 520px;   /* ✅ 右欄固定 520，可改 480~560 */
+  gap: 1.25rem;
+  align-items:stretch;                /* ✅ 左右欄同高，視覺更對齊 */
+  margin-top: .5rem;
+}
+
+/* 左側表格卡片標題（把原本的「設備清單」換成 DIP 標題後，字要更醒目） */
+.equip-card__title{
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: .01em;
+  line-height: 1.2;
+}
+
+/* 左右欄同高後：確保左邊卡片吃滿高度 */
+.equip-card{ height:100%; }
+
+/* 表格外層：灰色從這裡開始 */
+.table-wrap{
+  background: #f3f4f6;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 16px;      /* 同時解決你前面說的「往下一點」 */
+}
+.equip-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:520px;
+  background:#fff;
+}
+.equip-table{
+  margin-top: 18px;   /* 建議 12–20px 之間 */
+}
+.equip-table th,
+.equip-table td{
+  padding:.75rem .85rem;
+  border-bottom:1px solid rgba(15,23,42,.06);
+  text-align:left;
+  vertical-align:top;
+}
+.equip-table thead th{
+  background:rgba(15,23,42,.03);
+  font-weight:900;
+}
+.equip-table tbody tr:hover td{ background:rgba(15,23,42,.02); }
+.equip-table .col-qty{ width:90px; text-align:center; }
+
+/* 右側照片：縮小 + 兩張等寬 + 高度固定，視覺整齊 */
+.equip-photos{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  height:100%;            /* ✅ 吃到 equip-grid 同高後的高度 */
+}
+
+.equip-photo{
+  margin:0;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(15,23,42,.08);
+  background:#fff;
+  flex:1;                 /* ✅ 兩張圖卡平均分配高度 */
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+
+/* ✅ 圖片區撐滿卡片剩餘空間，caption 高度自然一致 */
+.equip-photo img{
+  display:block;
+  width:100%;
+  flex:1;
+  min-height:0;
+  max-height: 200px;
+  height:auto;
+  object-fit:cover;
+}
+
+.equip-photo figcaption{
+  padding:.7rem .85rem;
+  min-height:54px; /* ✅ 兩張卡 caption 對齊更穩 */
+  font-weight:800;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem;
+  align-items:baseline;
+}
+
+/* DIP 區塊最下面的「了解更多」置中 */
+.equip-cta{
   margin-top: 14px;
+  display:flex;
+  justify-content:center;
 }
 
-.position-tag {
-  font-size: 13px;
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: #f1f5f9;        /* 淡灰藍 */
-  color: #334155;
-  border: 1px dashed #cbd5e1; /* 虛線 → 明確不是按鈕 */
-  cursor: default;
+/* Outline pill button (區別於主 CTA) */
+.btn.btn-outline{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0.55rem 1.05rem;
+  font-size:0.9rem;
+  color:#475569;
+  border:1px dashed #cbd5e1;
+  border-radius:999px;
+  text-decoration:none;
+  background:transparent;
+  transition:all .2s ease;
+}
+.btn.btn-outline:hover{
+  color:#1f2937;
+  border-color:#94a3b8;
+  background:#f8fafc;
 }
 
-.position-tag .en {
-  display: inline;
-  margin-left: 4px;
-  font-weight: 600;
-  opacity: 0.7;
+/* Responsive */
+@media (max-width: 980px){
+  .equip-grid{ grid-template-columns: 1fr; }
+  .equip-table{ min-width:0; }
+  .equip-photos{ height:auto; }
+  .equip-photo{ flex:unset; }
+  .equip-photo img{ height:220px; flex:unset; }
+  .equip-card__title{ font-size:20px; }
 }
