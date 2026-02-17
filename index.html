@@ -70,7 +70,6 @@
             <ul class="kv">
               <li><b>成立時間</b> 2014 <span class="en">/ Established 2014</span></li>
               <li><b>廠區分佈</b> 三重、桃園 <span class="en">/ Sites: Sanchong, Taoyuan</span></li>
-              <li><b>辦公室 / DIP</b> 約 52 坪 <span class="en">/ Office & DIP area: ~52 ping</span></li>
               <li><b>代工領域</b> 電腦周邊、3C、車用、醫療、網通 <span class="en">/ Domains: peripherals, 3C, automotive, medical, networking</span></li>
             </ul>
           </div>
@@ -124,96 +123,40 @@
     <section class="section" id="capabilities">
       <div class="container">
         <div class="section__head">
-          <h2>製程能力與流程 <span class="en">Capabilities & Process</span></h2>
+          <h2>各項製程流程 <span class="en">Production Process Flow</span></h2>
           <p class="muted">
             依公司簡介整理 SMT / DIP / 組裝測試包裝之典型流程與能力要點。
             <span class="en">Typical process flow and capability highlights based on our company profile.</span>
           </p>
         </div>
 
-        <div class="tabs">
-          <button class="tab is-active" data-tab="smt">SMT</button>
-          <button class="tab" data-tab="dip">DIP</button>
-          <button class="tab" data-tab="assy">組裝 / 測試 / 包裝</button>
+        <div class="process-tabs" role="tablist" aria-label="製程流程圖切換">
+          <button class="process-tab is-active" data-flow="smt" role="tab" aria-selected="true">SMT</button>
+          <button class="process-tab" data-flow="dip" role="tab" aria-selected="false">DIP</button>
+          <button class="process-tab" data-flow="assy" role="tab" aria-selected="false">組裝 / 測試 / 包裝</button>
         </div>
 
-        <div class="tabpanels">
-          <div class="panel is-active" id="tab-smt">
-            <div class="grid2">
-              <div class="card">
-                <h3>SMT 流程 <span class="en">SMT Flow</span></h3>
-                <ol class="flow">
-                  <li>客戶採購單及供料 <span class="en">PO & material supply</span></li>
-                  <li>倉庫進料盤料 / 發料 <span class="en">Incoming & kitting</span></li>
-                  <li>錫膏印刷 <span class="en">Solder paste printing</span></li>
-                  <li>貼片 Mount <span class="en">Pick & place</span></li>
-                  <li>爐前目檢 / 迴焊 Reflow <span class="en">Pre-check & reflow</span></li>
-                  <li>AOI /（必要時）X-RAY <span class="en">AOI / X-ray (if needed)</span></li>
-                  <li>裁板 Router / QC 目檢 <span class="en">Depaneling & QC</span></li>
-                  <li>測試 / 包裝 / 出貨 <span class="en">Test, pack, ship</span></li>
-                </ol>
-              </div>
-              <div class="card">
-                <h3>能力摘要 <span class="en">Highlights</span></h3>
-                <ul class="bullets">
-                  <li>少量多樣、彈性排程 <span class="en">High-mix low-volume flexibility</span></li>
-                  <li>可搭配 AOI / 3D SPI / X-RAY<span class="en">AOI / 3D SPI / X-ray available</span></li>
-                  <li>支援後段組裝、測試與包裝銜接 <span class="en">Seamless integration to build-test-pack</span></li>
-                </ul>
-              </div>
+        <div class="process-current" aria-live="polite">
+          <div class="process-current__zh">SMT 生產製造流程</div>
+          <div class="process-current__en">SMT Production Process Flow</div>
+        </div>
+
+        <div class="process-panels">
+          <div class="process-panel is-active" data-flow="smt" role="tabpanel">
+            <div class="process-figure">
+              <img src="assets/process/SMT.svg" alt="SMT 生產製造流程圖" loading="lazy">
             </div>
           </div>
 
-          <div class="panel" id="tab-dip">
-            <div class="grid2">
-              <div class="card">
-                <h3>DIP 流程 <span class="en">DIP Flow</span></h3>
-                <ol class="flow">
-                  <li>客戶採購單及供料 <span class="en">PO & material supply</span></li>
-                  <li>倉庫進料盤料 / 發料 <span class="en">Incoming & kitting</span></li>
-                  <li>產線接收備料 / 前加工 <span class="en">Line prep & pre-processing</span></li>
-                  <li>波峰焊 <span class="en">Wave soldering</span></li>
-                  <li>QC 目檢 / 後加工 <span class="en">QC & post-processing</span></li>
-                  <li>FQC 成品目檢 / 出貨 <span class="en">Final QC & shipment</span></li>
-                </ol>
-              </div>
-              <div class="card">
-                <h3>DIP 製程能力 <span class="en">DIP Capability</span></h3>
-                <ul class="bullets">
-                  <li>可接受各類電子產品生產需求 <span class="en">Supports diverse electronics production needs</span></li>
-                  <li>獨立卸貨碼頭，可停放貨車及貨櫃 <span class="en">Dedicated loading dock for trucks/containers</span></li>
-                  <li>人力投入：4–5 人 / 8H + 加班（可增派）<span class="en">Staffing: 4–5 per day, overtime & scaling available</span></li>
-                  <li>工具：高溫烙鐵、小錫爐、加熱平台、電源供應器、氣槍 <span class="en">Tools: irons, solder pot, heating platform, PSU, hot air</span></li>
-                  <li>設備：波峰回焊機、毛刷機等周邊 <span class="en">Equipment: wave soldering & peripheral machines</span></li>
-                </ul>
-              </div>
+          <div class="process-panel" data-flow="dip" role="tabpanel">
+            <div class="process-figure">
+              <img src="assets/process/DIP.svg" alt="DIP 生產製造流程圖" loading="lazy">
             </div>
           </div>
 
-          <div class="panel" id="tab-assy">
-            <div class="grid2">
-              <div class="card">
-                <h3>組裝 / 測試 / 包裝流程 <span class="en">Build-Test-Pack Flow</span></h3>
-                <ol class="flow">
-                  <li>客戶採購單及供料 <span class="en">PO & material supply</span></li>
-                  <li>倉庫進料盤料 / 發料 <span class="en">Incoming & kitting</span></li>
-                  <li>產線接收備料 <span class="en">Line preparation</span></li>
-                  <li>組裝 <span class="en">Assembly</span></li>
-                  <li>測試 <span class="en">Testing</span></li>
-                  <li>QC 目檢 / 包裝 <span class="en">QC & packing</span></li>
-                  <li>FQC / 出貨 <span class="en">Final QC & shipment</span></li>
-                </ol>
-              </div>
-              <div class="card">
-                <h3>能力摘要 <span class="en">Capability</span></h3>
-                <ul class="bullets">
-                  <li>組裝段空間：約 40 坪，可堆放包材與棧板 <span class="en">Assembly area: ~40 ping for materials & pallets</span></li>
-                  <li>可停放貨車與大型貨櫃的卸貨碼頭 <span class="en">Dock access for trucks and large containers</span></li>
-                  <li>人力投入：4–5 人 / 8H + 加班（可增派）<span class="en">Staffing scalable with overtime</span></li>
-                  <li>工具：電動起子 x4、電源供應器 x2、氣槍 <span class="en">Tools: drivers x4, PSUs x2, hot-air set</span></li>
-                  <li>設備：自動包裝打帶機 x1 <span class="en">Equipment: automatic strapping machine x1</span></li>
-                </ul>
-              </div>
+          <div class="process-panel" data-flow="assy" role="tabpanel">
+            <div class="process-figure">
+              <img src="assets/process/Pack.svg" alt="組裝／測試／包裝流程圖" loading="lazy">
             </div>
           </div>
         </div>
@@ -254,6 +197,12 @@
               </tbody>
             </table>
           </div>
+          <div class="equip-card__cta">
+            <a class="btn btn-outline"
+              href="/equipment-detail.html#dip">
+              了解更多相關設備 →
+            </a>
+          </div>
         </div>
 
         <div class="equip-photos">
@@ -267,20 +216,68 @@
           </figure>
         </div>
       </div>
-      <div class="equip-cta">
+      <!-- <div class="equip-cta">
         <a class="btn btn-outline" href="#contact">了解更多設備規格 →</a>
-      </div>
+      </div> -->
     </div>
 
-    <!-- SMT (placeholder) -->
-    <div class="equip-next card" aria-label="SMT設備預告">
-      <h3>SMT 產線設備 <span class="en">SMT Line Equipment</span></h3>
+    <!-- SMT Line (Sanchong Plant 1) -->
+    <div class="equip-block" id="equipment-smt-sanchong1">
+      <div class="equip-grid">
+        <div class="card equip-card">
+          <h3 class="equip-card__title">SMT－三重1廠－生產設備 <span class="en">SMT Line Equipment (Sanchong Plant 1)</span></h3>
+
+          <div class="table-wrap" role="region" aria-label="SMT設備表格" tabindex="0">
+            <table class="equip-table">
+              <thead>
+                <tr>
+                  <th>設備名稱<br><span class="en-inline">Item</span></th>
+                  <th>製造商 &amp; 型號<br><span class="en-inline">Maker &amp; Model</span></th>
+                  <th class="col-qty">數量<br><span class="en-inline">Qty</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>自動印刷機</td><td>DEK HORIZON 03iX</td><td class="col-qty">2台</td></tr>
+                <tr><td>錫厚檢測機</td><td>TR7007D SPI</td><td class="col-qty">2台</td></tr>
+                <tr><td>打件機</td><td>FUJI/NXT III</td><td class="col-qty">2台</td></tr>
+                <tr><td>迴焊爐</td><td>BTU Pyramax</td><td class="col-qty">2台</td></tr>
+                <tr><td>自動光學檢測機</td><td>TR7500 QII</td><td class="col-qty">2台</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="equip-card__cta">
+            <a class="btn btn-outline"
+              href="/equipment-detail.html#smt1">
+              了解更多相關設備 →
+            </a>
+          </div>
+        </div>
+
+        <div class="equip-photos">
+          <figure class="equip-photo">
+            <img src="assets/equipment/SMT1.png" alt="SMT 三重1廠－產線設備" loading="lazy">
+            <figcaption>SMT 產線設備 <span class="en-inline">SMT production line</span></figcaption>
+          </figure>
+          <figure class="equip-photo">
+            <img src="assets/equipment/SMT1.png" alt="SMT 三重1廠－產線設備" loading="lazy">
+            <figcaption>SMT 產線設備 <span class="en-inline">SMT production line</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- <div class="equip-cta">
+        <a class="btn btn-outline" href="#contact">了解更多設備規格 →</a>
+      </div> -->
+    </div>
+
+    <!-- Next: SMT / 其他廠區（placeholder） -->
+    <div class="equip-next card" aria-label="其他設備預告">
+      <h3>其他產線設備 <span class="en">More Equipment</span></h3>
       <p class="muted">
-        下一步可用相同版型加入 SMT（桃園 / 三重）的設備清單與照片。
-        <span class="en">Next, we can add SMT (Taoyuan/Sanchong) equipment list and photos using the same layout.</span>
+        下一步可用相同版型加入 SMT（桃園 / 三重其他廠區）與其他設備清單與照片。
+        <span class="en">Next, we can add more equipment lists and photos for other SMT lines (Taoyuan / other Sanchong sites) using the same layout.</span>
       </p>
     </div>
-  </div>
 </section>
 
     <!-- Partners / Customers Marquee -->
@@ -289,36 +286,21 @@
         <h2 class="partners__title">合作夥伴</h2>
         <p class="partners__subtitle">Our Partners</p>
 
-        <div class="partners__marquee" aria-label="合作廠商標誌輪播">
-          <div class="partners__track" id="partnersTrack">
-            <!-- 一組 LOGO（JS 會自動複製一份做無縫輪播） -->
-            <div class="partners__item">
-              <img src="assets/partners/itri.svg" alt="工研院 ITRI" loading="lazy" />
-            </div>
-            <div class="partners__item">
-              <img src="assets/partners/qisda.svg" alt="佳世達 Qisda" loading="lazy" />
-            </div>
-            <div class="partners__item">
-              <img src="assets/partners/quanta.svg" alt="廣達 Quanta" loading="lazy" />
-            </div>
-            <div class="partners__item">
-              <img src="assets/partners/jet.svg" alt="JET" loading="lazy" />
-            </div>
-            <div class="partners__item">
-              <img src="assets/partners/lei.svg" alt="LEI" loading="lazy" />
-            </div>
-            <div class="partners__item">
-              <img src="assets/partners/litemax.svg" alt="LITEMAX" loading="lazy" />
-            </div>
-            <div class="partners__item">
-              <img src="assets/partners/liteon.svg" alt="LITEON 光寶" loading="lazy" />
-            </div>
-            <div class="partners__item">
-              <img src="assets/partners/changhong.svg" alt="長虹光電" loading="lazy" />
-            </div>
-            <div class="partners__item">
-              <img src="assets/partners/everlight.svg" alt="億光電子 Everlight" loading="lazy" />
-            </div>
+        <div class="partners__grid" aria-label="合作廠商標誌">
+          <div class="partners__item">
+            <img src="assets/partners/itri.svg" alt="工研院 ITRI" loading="lazy" />
+          </div>
+
+          <div class="partners__item">
+            <img src="assets/partners/qisda.svg" alt="佳世達 Qisda" loading="lazy" />
+          </div>
+
+          <div class="partners__item">
+            <img src="assets/partners/liteon.svg" alt="LITEON 光寶" loading="lazy" />
+          </div>
+
+          <div class="partners__item">
+            <img src="assets/partners/everlight.svg" alt="億光電子 Everlight" loading="lazy" />
           </div>
         </div>
       </div>

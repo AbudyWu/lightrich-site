@@ -47,3 +47,42 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   track.dataset.cloned = '1';
 })();
+
+// Process flow tabs (diagram switch)
+(function initProcessTabs(){
+  const tabs = document.querySelectorAll('.process-tab');
+  if (!tabs.length) return;
+
+  const panels = document.querySelectorAll('.process-panel');
+  const zhEl = document.querySelector('.process-current__zh');
+  const enEl = document.querySelector('.process-current__en');
+
+  const labelMap = {
+    smt: { zh: 'SMT 生產製造流程', en: 'SMT Production Process Flow' },
+    dip: { zh: 'DIP 生產製造流程', en: 'DIP Production Process Flow' },
+    assy: { zh: '組裝 / 測試 / 包裝流程', en: 'Build / Test / Pack Process Flow' },
+  };
+
+  function setActive(key){
+    tabs.forEach(t => {
+      const active = t.getAttribute('data-flow') === key;
+      t.classList.toggle('is-active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    panels.forEach(p => p.classList.toggle('is-active', p.getAttribute('data-flow') === key));
+
+    const label = labelMap[key];
+    if (label && zhEl && enEl){
+      zhEl.textContent = label.zh;
+      enEl.textContent = label.en;
+    }
+  }
+
+  tabs.forEach(t => {
+    t.addEventListener('click', () => setActive(t.getAttribute('data-flow')));
+  });
+
+  // init (keep current active, otherwise default smt)
+  const current = document.querySelector('.process-tab.is-active')?.getAttribute('data-flow') || 'smt';
+  setActive(current);
+})();

@@ -559,3 +559,126 @@ body{
   .equip-photo img{ height:220px; flex:unset; }
   .equip-card__title{ font-size:20px; }
 }
+
+.equip-card__cta{
+  margin-top: 14px;
+  display: flex;
+  justify-content: center; /* 左對齊，比置中更專業 */
+}
+
+.equip-card__title .en{
+  display: block;
+  margin-top: 4px;
+  font-size: 0.9em;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+/* Partners: 靜態 LOGO 牆（取代跑馬燈） */
+.partners__grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+@media (max-width: 980px){
+  .partners__grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* 讓每個 logo 盒子一致 */
+.partners__item{
+  height: 72px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.partners__item img{
+  max-height: 42px;
+  max-width: 170px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.process-diagram{
+  margin-top: 24px;
+  text-align: center;
+}
+
+.process-diagram img{
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== Process Flow (Best Version) ===== */
+
+.process-tabs{
+  display:flex;
+  gap:10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.process-tab{
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.process-tab.is-active{
+  background: rgba(96,165,250,0.18);
+  border-color: rgba(96,165,250,0.35);
+}
+
+.process-current{
+  margin-top: 14px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.process-current__zh{
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+.process-current__en{
+  margin-top: 2px;
+  color: #6b7280;
+  font-weight: 800;
+}
+
+.process-panels{
+  margin-top: 10px;
+}
+
+.process-panel{ display:none; }
+.process-panel.is-active{ display:block; }
+
+.process-figure{
+  margin-top: 6px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 18px;
+  padding: 14px;
+  overflow-x: auto;   /* 手機可左右滑 */
+  -webkit-overflow-scrolling: touch;
+}
+
+.process-figure img{
+  display:block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;  /* 桌機放大更清楚 */
+  height: auto;
+}
