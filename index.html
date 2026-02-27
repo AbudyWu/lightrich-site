@@ -170,9 +170,49 @@
     <div class="section__head">
       <h2>產線設備 <span class="en">Equipment</span></h2>
     </div>
+    
+    <!-- Equipment Showcase (auto carousel + selectable steps) -->
+    <div class="equip-showcase card" id="equipment-showcase-smt">
+      <div class="equip-showcase__head">
+        <h3>SMT 生產設備導覽 <span class="en">SMT Equipment Guide</span></h3>
+        <p class="muted">
+          點選上方流程節點可查看對應設備示意與規格重點。
+          <span class="en">Click a step to view the related equipment image and key specs.</span>
+        </p>
+      </div>
+
+      <!-- 你要的「流程bar字」：照你圖上的順序與文字 -->
+      <div class="equip-steps" role="tablist" aria-label="SMT 製程設備流程">
+        <button class="equip-step is-active" role="tab" aria-selected="true" data-step="printer">自動印錫機</button>
+        <button class="equip-step" role="tab" aria-selected="false" data-step="spi">3D錫膏檢查機</button>
+        <button class="equip-step" role="tab" aria-selected="false" data-step="mounter">貼片機</button>
+        <button class="equip-step" role="tab" aria-selected="false" data-step="reflow">迴焊爐</button>
+        <button class="equip-step" role="tab" aria-selected="false" data-step="aoi">3D光學檢查機</button>
+        <button class="equip-step" role="tab" aria-selected="false" data-step="xray">X-RAY</button>
+      </div>
+
+      <div class="equip-showcase__body">
+        <figure class="equip-showcase__media">
+          <img id="equipShowcaseImg" src="assets/equipment/showcase/smt_printer.png" alt="自動印錫機" loading="lazy">
+        </figure>
+
+        <div class="equip-showcase__spec" aria-live="polite">
+          <div class="equip-showcase__specTitle" id="equipShowcaseTitle">自動印錫機</div>
+          <ul class="equip-showcase__specList" id="equipShowcaseSpecs">
+            <li>（示例）最大基板尺寸：510×510mm</li>
+            <li>（示例）最小基板尺寸：50×50mm</li>
+            <li>（示例）傳輸方式：一段式運輸軌道</li>
+          </ul>
+          <!-- <div class="equip-showcase__hint muted">
+            ＊圖片與規格可在 <b>main.js</b> 的 <code>EQUIP_SHOWCASE_DATA</code> 直接替換。 -->
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- DIP Line -->
-    <div class="equip-block" id="equipment-dip">
+    <!-- <div class="equip-block" id="equipment-dip">
       <div class="equip-grid">
         <div class="card equip-card">
           <h3 class="equip-card__title">DIP－三重產線設備 <span class="en">DIP Line Equipment (Sanchong)</span></h3>
@@ -216,13 +256,10 @@
           </figure>
         </div>
       </div>
-      <!-- <div class="equip-cta">
-        <a class="btn btn-outline" href="#contact">了解更多設備規格 →</a>
-      </div> -->
-    </div>
+    </div> -->
 
     <!-- SMT Line (Sanchong Plant 1) -->
-    <div class="equip-block" id="equipment-smt-sanchong1">
+    <!-- <div class="equip-block" id="equipment-smt-sanchong1">
       <div class="equip-grid">
         <div class="card equip-card">
           <h3 class="equip-card__title">SMT－三重1廠－生產設備 <span class="en">SMT Line Equipment (Sanchong Plant 1)</span></h3>
@@ -265,19 +302,8 @@
         </div>
       </div>
 
-      <!-- <div class="equip-cta">
-        <a class="btn btn-outline" href="#contact">了解更多設備規格 →</a>
-      </div> -->
-    </div>
 
-    <!-- Next: SMT / 其他廠區（placeholder） -->
-    <div class="equip-next card" aria-label="其他設備預告">
-      <h3>其他產線設備 <span class="en">More Equipment</span></h3>
-      <p class="muted">
-        下一步可用相同版型加入 SMT（桃園 / 三重其他廠區）與其他設備清單與照片。
-        <span class="en">Next, we can add more equipment lists and photos for other SMT lines (Taoyuan / other Sanchong sites) using the same layout.</span>
-      </p>
-    </div>
+    </div> -->
 </section>
 
     <!-- Partners / Customers Marquee -->
