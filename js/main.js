@@ -174,7 +174,7 @@ const EQUIP_SHOWCASE_DATA = {
   },
   reflow: {
     title: "迴焊爐",
-    img: "assets/equipment/SMT4.jpg",
+    img: "assets/equipment/TEA-800D.png",
     specs: [
       "PCB 最大寬度 Max PCB Width：270 mm（單通道 50 – 490 mm）",
       "元件高度 Component Clearance：上板 30 mm / 下板 25 mm（含板厚）",
