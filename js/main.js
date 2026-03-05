@@ -1,6 +1,5 @@
 /* =========================================================
-   main.js (C1) - Full features + no-jitter showcase + IO pause
-   Based on your original copy:  [oai_citation:1‡main copy.js](sediment://file_000000002de87208aaf4b5e5ba8381c2)
+   main.js
    ========================================================= */
 
 /* -------------------------
@@ -61,7 +60,6 @@ function initFooterYear() {
 
 /* =========================
    Partners marquee: clone for seamless looping
-   (如果你改成靜態 grid，#partnersTrack 不存在就會自動略過)
    ========================= */
 function initPartnersMarquee() {
   const track = qs("#partnersTrack");
@@ -87,7 +85,7 @@ function initProcessTabs() {
   const labelMap = {
     smt: { zh: "SMT 生產製造流程", en: "SMT Production Process Flow" },
     dip: { zh: "DIP 生產製造流程", en: "DIP Production Process Flow" },
-    assy: { zh: "組裝 / 測試 / 包裝流程", en: "Build / Test / Pack Process Flow" },
+    assy: { zh: "組裝 / 測試 / 包裝流程", en: "Assemble / Test / Pack Process Flow" },
   };
 
   function setActive(key) {
@@ -118,7 +116,8 @@ function initProcessTabs() {
 }
 
 /* =========================
-   Equipment Showcase data (unchanged)
+   Equipment Showcase data
+   💡 未來資料變多時，可將此包資料拉出存成 data.json，透過 fetch 讀取
    ========================= */
 const EQUIP_SHOWCASE_DATA = {
   printer: {
@@ -198,12 +197,8 @@ const EQUIP_SHOWCASE_DATA = {
       "電路板尺寸 PCB Size：500 × 500 mm",
       "最小元件尺寸 Min Component Size：1005",
       "板邊寬度限制 Board Edge Clearance：上方 3.5 mm／下方 4.5 mm",
-      "可量測缺陷類型 Detectable Defects：",
-      "缺件、偏移、旋轉、反件、極反、立碑、浮高",
-      "Missing, Misalignment, Rotation, Polarity Error, Tombstone, Lifted Lead",
-      "可量測項目 Inspection Coverage：",
-      "翹腳、焊錫不足、短路、OCV、多件、損件",
-      "Lead Lift, Insufficient Solder, Short Circuit, OCV, Extra Component, Damage",
+      "可量測缺陷類型 Detectable Defects：缺件、偏移、旋轉、反件、極反、立碑、浮高",
+      "可量測項目 Inspection Coverage：翹腳、焊錫不足、短路、OCV、多件、損件",
       "高度重現性 Height Repeatability：± 3 μm",
       "XY 影像解析度 XY Resolution：10 μm",
       "高度解析度 Height Resolution：2.3 μm",
@@ -225,11 +220,7 @@ const EQUIP_SHOWCASE_DATA = {
 };
 
 /* =========================
-   Equipment Showcase (C improvements)
-   - preload + cache
-   - auto cycle: no scrollIntoView
-   - user click: scrollIntoView + stop forever
-   - intersection observer: out of view stop, in view start (unless user clicked)
+   Equipment Showcase
    ========================= */
 function initEquipShowcase() {
   const stepsWrap = qs(".equip-steps");
@@ -243,13 +234,13 @@ function initEquipShowcase() {
 
   let idx = Math.max(0, buttons.findIndex((b) => b.classList.contains("is-active")));
   let timer = null;
-  let userPauseTimer = null;   // ✅ 新增：點擊後延遲恢復用
+  let userPauseTimer = null;
   let pausedByUser = false;
   const INTERVAL_MS = 3500;
   const USER_PAUSE_MS = 30000;
 
-  // preload cache (避免每次 new Image)
-  const cache = new Map(); // url -> Promise<void>
+  // Preload cache
+  const cache = new Map();
   function preload(url) {
     if (cache.has(url)) return cache.get(url);
     const p = new Promise((resolve) => {
@@ -275,7 +266,6 @@ function initEquipShowcase() {
     titleEl.textContent = d.title;
     imgEl.alt = d.title;
 
-    // ✅ 圖片載好再換，減少微跳
     await preload(d.img);
     imgEl.src = d.img;
 
@@ -286,7 +276,6 @@ function initEquipShowcase() {
       specsEl.appendChild(li);
     });
 
-    // ✅ 只在使用者點擊時才捲動 steps bar
     if (fromUser) {
       const activeBtn = buttons.find((b) => b.dataset.step === stepKey);
       activeBtn?.scrollIntoView({ behavior: "auto", inline: "center", block: "nearest" });
@@ -299,47 +288,38 @@ function initEquipShowcase() {
   }
 
   function start() {
-  // ✅ 點擊暫停期間，不要自動啟動
-  if (pausedByUser) return;
-  if (userPauseTimer) return;
-  if (timer) return;
+    if (pausedByUser) return;
+    if (userPauseTimer) return;
+    if (timer) return;
 
-  timer = window.setInterval(() => {
-    idx = (idx + 1) % buttons.length;
-    render(buttons[idx].dataset.step, false);
-  }, INTERVAL_MS);
-}
+    timer = window.setInterval(() => {
+      idx = (idx + 1) % buttons.length;
+      render(buttons[idx].dataset.step, false);
+    }, INTERVAL_MS);
+  }
 
-  // click -> set idx, render + stop forever
   buttons.forEach((btn, i) => {
-  btn.addEventListener("click", () => {
-    idx = i;
+    btn.addEventListener("click", () => {
+      idx = i;
+      stop();
+      render(btn.dataset.step, true);
 
-    // ✅ 先停掉輪播
-    stop();
+      pausedByUser = true;
+      if (userPauseTimer) window.clearTimeout(userPauseTimer);
 
-    // ✅ 顯示使用者點到的項目（並且會 scrollIntoView）
-    render(btn.dataset.step, true);
-
-    // ✅ 重設 30 秒延遲
-    pausedByUser = true;
-    if (userPauseTimer) window.clearTimeout(userPauseTimer);
-
-    userPauseTimer = window.setTimeout(() => {
-      userPauseTimer = null;
-      pausedByUser = false;
-      start(); // ✅ 30 秒後繼續播放
-    }, USER_PAUSE_MS);
+      userPauseTimer = window.setTimeout(() => {
+        userPauseTimer = null;
+        pausedByUser = false;
+        start();
+      }, USER_PAUSE_MS);
+    });
   });
-});
 
-  // hover/focus pause/resume (but if user clicked, won’t resume)
   stepsWrap.addEventListener("mouseenter", stop);
   stepsWrap.addEventListener("mouseleave", start);
   stepsWrap.addEventListener("focusin", stop);
   stepsWrap.addEventListener("focusout", start);
 
-  // IO: out of view stop, in view start
   const rootBlock = stepsWrap.closest(".equip-showcase") || stepsWrap;
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
@@ -353,7 +333,6 @@ function initEquipShowcase() {
     io.observe(rootBlock);
   }
 
-  // init
   render(buttons[idx]?.dataset.step || buttons[0].dataset.step, false);
   start();
 }
